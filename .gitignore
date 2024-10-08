@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # Ignore out folder
 build
+
+# Ignore visual studio filters
+*.filters
