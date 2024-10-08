@@ -19,7 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Logging.cpp" />
     <ClCompile Include="src\Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Application_SDL2.h" />
+    <ClInclude Include="src\FactoryContainer.h" />
+    <ClInclude Include="src\IApplication.h" />
+    <ClInclude Include="src\Logging.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -99,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <TreatWarningAsError>true</TreatWarningAsError>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(SolutionDir)third-party\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -109,15 +116,15 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2main.lib;$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Message>
       </Message>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>xcopy /d  "$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.dll" "$(OutDir)"</Command>
+      <Command>xcopy /d  /y "$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -128,7 +135,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <TreatWarningAsError>true</TreatWarningAsError>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(SolutionDir)third-party\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -140,15 +147,15 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2main.lib;$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Message>
       </Message>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>xcopy /d  "$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.dll" "$(OutDir)"</Command>
+      <Command>xcopy /d  /y "$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -157,7 +164,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <TreatWarningAsError>true</TreatWarningAsError>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(SolutionDir)third-party\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -167,15 +174,15 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2main.lib;$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Message>
       </Message>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>xcopy /d  "$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.dll" "$(OutDir)"</Command>
+      <Command>xcopy /d  /y "$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -186,7 +193,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <TreatWarningAsError>true</TreatWarningAsError>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(SolutionDir)third-party\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -198,15 +205,15 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2main.lib;$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Message>
       </Message>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>xcopy /d  "$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.dll" "$(OutDir)"</Command>
+      <Command>xcopy /d  /y "$(SolutionDir)third-party\libs\sdl2\$(PlatformShortName)\SDL2.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
