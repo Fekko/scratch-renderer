@@ -19,13 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\ApplicationSDL2.cpp" />
     <ClCompile Include="src\Logging.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Application_SDL2.h" />
+    <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\ApplicationSDL2.h" />
     <ClInclude Include="src\FactoryContainer.h" />
-    <ClInclude Include="src\IApplication.h" />
     <ClInclude Include="src\Logging.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
