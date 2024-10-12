@@ -1,4 +1,5 @@
 #pragma once
+#include <stdint.h>
 
 struct SDL_Renderer;
 struct SDL_Window;
@@ -28,7 +29,7 @@ namespace ScratchRenderer
 		bool _initialized{ false };
 		bool _continue{ false };
 
-		SDL_Texture* _pScreenTexture{};
-		unsigned int* _pPixelBuffer{};
+		SDL_Texture* _pTexture{};
+		uint32_t* _pPixels{};
 	};
 }

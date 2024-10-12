@@ -11,6 +11,7 @@ ApplicationSDL2::ApplicationSDL2(const char* pName, int screenWidth, int screenH
 	_screenHeight{ screenHeight } {}
 
 ApplicationSDL2::~ApplicationSDL2() {
+	SDL_DestroyTexture(_pTexture);
 	SDL_DestroyRenderer(_pRenderer);
 	SDL_DestroyWindow(_pWindow);
 	SDL_Quit();
@@ -41,11 +42,13 @@ bool ApplicationSDL2::Initialize() {
 		return false;
 	}
 
-	_pScreenTexture = SDL_CreateTexture(_pRenderer,
+	_pTexture = SDL_CreateTexture(_pRenderer,
 		SDL_PIXELFORMAT_RGBA8888,
 		SDL_TEXTUREACCESS_STREAMING,
 		_screenWidth,
 		_screenHeight);
+
+	_pPixels = new uint32_t[_screenWidth * _screenHeight]{};
 
 	return _initialized = true;
 }
@@ -69,11 +72,8 @@ void ApplicationSDL2::Run() {
 
 		// Clear screen
 		SDL_RenderClear(_pRenderer);
-
-		// Render
 		Render();
-
-		// Update screen
+		SDL_RenderCopy(_pRenderer, _pTexture, NULL, NULL);
 		SDL_RenderPresent(_pRenderer);
 	}
 }
@@ -83,28 +83,31 @@ void ApplicationSDL2::Stop() {
 }
 
 void ApplicationSDL2::Render() {
-	int pitch{};
-
-	SDL_LockTexture(_pScreenTexture,
-		NULL,
-		(void**)&_pPixelBuffer,
-		&pitch);
+	for (int y{}; y < _screenHeight;  ++y) {
+		for (int x{}; x < _screenWidth; ++x) {
+			_pPixels[x + y* _screenWidth] = UINT_MAX;
+		}
+	}
 
 	int x{};
 	int y{};
 	SDL_GetMouseState(&x, &y);
 
-	unsigned char r = CHAR_MAX;
-	unsigned char g = 0;
-	unsigned char b = 0;
-	unsigned char a = CHAR_MAX;
-	unsigned int color = (r << 24) | (g << 16) | (b << 8)|(a);
-	_pPixelBuffer[x + y*_screenWidth] = color;
+	//unsigned char r = 0;
+	//unsigned char g = CHAR_MAX;
+	//unsigned char b = 0;
+	//unsigned char a = CHAR_MAX;
+	unsigned int color = 0; //(r << 24) | (g << 16) | (b << 8) | (a);
+	_pPixels[x + y * _screenWidth] = color;
 
-	SDL_RenderCopy(_pRenderer, 
-		_pScreenTexture, 
-		NULL, 
-		NULL);
+	int texturePitch{};
+	void* pTexturePixels{};
+	SDL_LockTexture(_pTexture,
+		NULL,
+		(void**)&pTexturePixels,
+		&texturePitch); // TODO if else
 
-	SDL_UnlockTexture(_pScreenTexture);
+	memcpy(pTexturePixels, _pPixels, texturePitch * _screenHeight);
+
+	SDL_UnlockTexture(_pTexture);
 }
