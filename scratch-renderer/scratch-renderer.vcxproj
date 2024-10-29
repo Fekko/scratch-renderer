@@ -19,16 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\PixelBuffer.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\ApplicationSDL2.cpp" />
     <ClCompile Include="src\Logging.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Pixel.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\ApplicationSDL2.h" />
     <ClInclude Include="src\FactoryContainer.h" />
     <ClInclude Include="src\Logging.h" />
+    <ClInclude Include="src\PixelBuffer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

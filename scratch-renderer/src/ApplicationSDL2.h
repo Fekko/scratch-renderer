@@ -5,6 +5,8 @@ struct SDL_Renderer;
 struct SDL_Window;
 struct SDL_Texture;
 
+class Renderer;
+
 namespace ScratchRenderer
 {
 	class ApplicationSDL2 final
@@ -19,17 +21,19 @@ namespace ScratchRenderer
 		void Stop();
 
 	private:
+		const char* _pName{};
 		const int _screenWidth{};
 		const int _screenHeight{};
-
-		const char* _pName{};
-		SDL_Renderer* _pRenderer{};
-		SDL_Window* _pWindow{};
 
 		bool _initialized{ false };
 		bool _continue{ false };
 
-		SDL_Texture* _pTexture{};
+		SDL_Renderer* _pRendererSDL{};
+		SDL_Window* _pWindowSDL{};
+		SDL_Texture* _pTextureSDL{};
+
+		Renderer* _pRenderer{};
+
 		uint32_t* _pPixels{};
 	};
 }

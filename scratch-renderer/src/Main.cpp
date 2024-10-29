@@ -1,6 +1,7 @@
 #include "ApplicationSDL2.h"
 #include "FactoryContainer.h"
 #include <iostream>
+#include <format>
 
 #include "Logging.h"
 
@@ -10,8 +11,11 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
 	__INFO__("Hello world");
 
-	auto* app = new ScratchRenderer::ApplicationSDL2("APP", 800, 600);
+	const char* TITLE = "APP";
+	constexpr int WIDTH = 1920;
+	constexpr int HEIGHT = 1080;
 
+	auto* app = new ScratchRenderer::ApplicationSDL2(TITLE, WIDTH, HEIGHT);
 
 	app->Run();
 
