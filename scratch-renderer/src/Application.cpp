@@ -1,26 +1,26 @@
 #include <sdl2/SDL.h>
 #include <format>
-#include "ApplicationSDL2.h" 
+#include "Application.h" 
 #include "Logging.h"
 #include "Renderer.h"
 #include "PixelBuffer.h"
 
 using namespace ScratchRenderer;
 
-ApplicationSDL2::ApplicationSDL2(const char* pName, int screenWidth, int screenHeight) :
+Application::Application(const char* pName, int screenWidth, int screenHeight) :
 	_pName{ pName },
 	_screenWidth{ screenWidth },
 	_screenHeight{ screenHeight } 
 {}
 
-ApplicationSDL2::~ApplicationSDL2() {
+Application::~Application() {
 	SDL_DestroyTexture(_pTextureSDL);
 	SDL_DestroyRenderer(_pRendererSDL);
 	SDL_DestroyWindow(_pWindowSDL);
 	SDL_Quit();
 }
 
-bool ApplicationSDL2::Initialize() {
+bool Application::Initialize() {
 	if (_initialized) return true;
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -56,7 +56,7 @@ bool ApplicationSDL2::Initialize() {
 	return _initialized = true;
 }
 
-void ApplicationSDL2::Run() {
+void Application::Run() {
 	if (!Initialize()) return;
 
 	_continue = true;
@@ -81,11 +81,11 @@ void ApplicationSDL2::Run() {
 	}
 }
 
-void ApplicationSDL2::Stop() {
+void Application::Stop() {
 	_continue = false;
 }
 
-void ApplicationSDL2::Render() {
+void Application::Render() {
 	PixelBuffer buffer = PixelBuffer(_screenWidth, _screenHeight);
 	_pRenderer->Render(buffer);
 

@@ -1,8 +1,4 @@
-#include "ApplicationSDL2.h"
-#include "FactoryContainer.h"
-#include <iostream>
-#include <format>
-
+#include "Application.h"
 #include "Logging.h"
 
 using namespace ScratchRenderer;
@@ -15,7 +11,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 	constexpr int WIDTH = 1920;
 	constexpr int HEIGHT = 1080;
 
-	auto* app = new ScratchRenderer::ApplicationSDL2(TITLE, WIDTH, HEIGHT);
+	auto* app = new ScratchRenderer::Application(TITLE, WIDTH, HEIGHT);
 
 	app->Run();
 

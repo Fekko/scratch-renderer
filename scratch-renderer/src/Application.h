@@ -9,12 +9,12 @@ class Renderer;
 
 namespace ScratchRenderer
 {
-	class ApplicationSDL2 final
+	class Application final
 	{
 	public:
 
-		ApplicationSDL2(const char* pName, int screenWidth, int screenHeight);
-		~ApplicationSDL2();
+		Application(const char* pName, int screenWidth, int screenHeight);
+		~Application();
 		bool Initialize();
 		void Render();
 		void Run();

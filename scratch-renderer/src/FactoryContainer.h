@@ -3,6 +3,8 @@
 #include <typeindex>
 #include <cassert>
 
+// TODO: Descriptor -> Can be factory, Can be Singleton, Can be Transient, ...
+
 class FactoryContainer
 {
 public:
